@@ -65,3 +65,5 @@ minikube start --extra-config="apiserver.cors-allowed-origins=['http://boot.dev'
 # Open a tunnel
 minikube tunnel --bind-address="127.0.0.1" -c
 ```
+
+You should now be able to connect to [http://synchat.internal/](http://synchat.internal/)
