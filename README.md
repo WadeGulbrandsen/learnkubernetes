@@ -62,11 +62,30 @@ NOTE: Make sure Docker is running before starting Minikube
 # Start Minikube
 minikube start --extra-config="apiserver.cors-allowed-origins=['http://boot.dev']"
 
+# Install Envoy Gateway
+kubectl apply --server-side -f https://github.com/envoyproxy/gateway/releases/download/v1.5.1/install.yaml
+
+# Create the crawler namespace
+kubectl create ns crawler
+
 # Apply all the configurations
 kubectl apply -f '*.yaml'
 
 # Open a tunnel
 minikube tunnel --bind-address="127.0.0.1" -c
+```
+
+Update your `/etc/hosts` file (`C:\Windows\System32\drivers\etc\hosts` on Windows) with the following.
+
+```
+127.0.0.1        synchat.internal
+127.0.0.1        synchatapi.internal
+```
+
+You may need to use the minikube local address instead of `127.0.0.1` on Linux. Find it by running:
+
+```bash
+minikube ip
 ```
 
 You should now be able to connect to [http://synchat.internal/](http://synchat.internal/)
