@@ -22,6 +22,4 @@ spec:
                 name: synergychat-testram-configmap
           resources:
             limits:
-              memory: 40000Mi
-            requests:
-              memory: 40000Mi
+              memory: 256Mi
