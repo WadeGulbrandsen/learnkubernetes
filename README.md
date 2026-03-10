@@ -63,7 +63,8 @@ NOTE: Make sure Docker is running before starting Minikube
 minikube start --extra-config="apiserver.cors-allowed-origins=['http://boot.dev']"
 
 # Install Envoy Gateway
-kubectl apply --server-side -f https://github.com/envoyproxy/gateway/releases/download/v1.5.1/install.yaml
+kubectl apply --server-side \
+    -f https://github.com/envoyproxy/gateway/releases/download/v1.5.1/install.yaml
 
 # Create the crawler namespace
 kubectl create ns crawler
