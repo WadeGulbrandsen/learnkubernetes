@@ -62,8 +62,20 @@ NOTE: Make sure Docker is running before starting Minikube
 # Start Minikube
 minikube start --extra-config="apiserver.cors-allowed-origins=['http://boot.dev']"
 
+# Apply all the configurations
+kubectl apply -f '*.yaml'
+
 # Open a tunnel
 minikube tunnel --bind-address="127.0.0.1" -c
 ```
 
 You should now be able to connect to [http://synchat.internal/](http://synchat.internal/)
+
+## Cleanup
+
+To remove the K8s cluster:
+
+```bash
+minikube stop
+minikube delete
+```
