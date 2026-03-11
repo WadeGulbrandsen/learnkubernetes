@@ -29,20 +29,14 @@ minikube version
 # Install bash-completion
 sudo apt install bash-completion
 
-# Enable bash-completion in ~/.bashrc
+# Add the completions to ~/.bashrc
 cat <<EOT >> ~/.bashrc
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+
+# Autocompletions
+source <(docker completion bash)
+source <(kubectl completion bash)
+source <(minikube completion bash)
 EOT
-
-# Create directory for completions
-mkdir -p ~/.local/share/bash-completion/completions
-
-# Create the completion files
-docker completion bash > ~/.local/share/bash-completion/completions/docker
-kubectl completion bash > ~/.local/share/bash-completion/completions/kubectl
-minikube completion bash > ~/.local/share/bash-completion/completions/minikube
 
 # Reload the profile
 source ~/.bashrc
